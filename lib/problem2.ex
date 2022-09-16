@@ -28,14 +28,14 @@ defmodule Fibonacci do
   #   if rem(head, 2) == 0, do: {list, accumulator + head}, else: { list, accumulator }
   # end
 
-  def series(a, b, accumulator \\ 0)
+  def series(a, b, accumulator \\ 2)
 
   def series(a, b, accumulator) when b < @limit do
-    if rem(a, 2) == 0, do: series(b, a + b, accumulator + a), else: series(b, a + b, accumulator)
+    if rem(b, 2) == 0, do: series(b, a + b, accumulator + b), else: series(b, a + b, accumulator)
   end
 
-  def series(a, b, accumulator) when b > @limit do
-    if rem(a, 2) == 0, do: accumulator + a, else: accumulator
+  def series(_, b, accumulator) when b > @limit do
+    accumulator
   end
 end
 
