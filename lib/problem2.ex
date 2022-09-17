@@ -31,7 +31,14 @@ defmodule Fibonacci do
   def series(a, b, accumulator \\ 2)
 
   def series(a, b, accumulator) when b < @limit do
-    if rem(b, 2) == 0, do: series(b, a + b, accumulator + b), else: series(b, a + b, accumulator)
+    # Using if else
+    # if rem(b, 2) == 0, do: series(b, a + b, accumulator + b), else: series(b, a + b, accumulator)
+
+    # Using case
+    case rem(b, 2) do
+      0 -> series(b, a + b, accumulator + b)
+      _ -> series(b, a + b, accumulator)
+    end
   end
 
   def series(_, b, accumulator) when b > @limit do
